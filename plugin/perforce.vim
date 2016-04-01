@@ -307,3 +307,11 @@ function! perforce#P4CreateChangelist(description)
   endif
   return ''
 endfunction
+
+function! g:Setft()
+  if getline(1) =~ '^# A Perforce .* Specification\.$'
+    set ft=perforce
+  endif
+endfunction
+
+au BufNewFile,BufRead /tmp/tmp.*  call g:Setft()
